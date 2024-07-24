@@ -1,5 +1,5 @@
 ---
-pubDate: 2023-12-23
+pubDate: 2024-07-19
 author: The Industrialist
 title: "Mr. Kundur – Primex Plastic"
 description: "Auto Parts Manufacturer in Bangalore. Specializing in precision Injection and Insert molded components"
