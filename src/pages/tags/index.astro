@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+const allPosts = await getCollection("posts");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+const sortedTags = tags.sort((a, b) => a.localeCompare(b)); // Sort tags alphabetically
+
+const pageTitle = "Tag Index";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section>
+    <div class="mx-auto max-w-7xl px-8 py-12 md:px-12 lg:px-32">
+      <ol role="list" class="mt-6 flex flex-col space-y-2">
+        {
+          sortedTags.map((tag) => (
+            <li>
+              <a
+                class="text-balance font-display text-4xl font-medium tracking-tight text-black hover:text-blue-500 md:text-6xl"
+                href={`/tags/${tag}`}
+              >
+                {tag}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+</BaseLayout>

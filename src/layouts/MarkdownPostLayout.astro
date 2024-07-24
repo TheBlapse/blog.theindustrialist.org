@@ -1,0 +1,74 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+import { SEO } from "astro-seo";
+
+const showNavigation = true;
+
+// Define date formatting options
+const options: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+
+// Format the publication date
+const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
+  "en-US",
+  options
+);
+---
+
+<!---
+Use AstroSeo in all the pages you want different Seo than the index page
+-->
+<SEO
+  title={frontmatter.title}
+  description={frontmatter.description}
+  canonical="https://www.theindustrialist.org/"
+/>
+<BaseLayout showNavigation={showNavigation}>
+  <section class="flex w-full flex-col items-center px-6">
+    <div class="w-full max-w-7xl items-center self-center py-12 lg:pt-24">
+      <div class="mx-auto mt-8 w-full max-w-3xl lg:mt-12">
+        <h1
+          class="mb-2 text-pretty font-display text-2xl font-medium text-black md:text-5xl"
+        >
+          {frontmatter.title}
+        </h1>
+        <div class="mb-4 flex flex-col justify-between md:flex-row lg:mb-8">
+          <p class="text-xs text-zinc-500 lg:text-base">
+            <span class="font-sans font-medium text-black"
+              >{frontmatter.author}</span
+            >
+            <span aria-hidden="true">&middot;</span>
+            <span class="font-sans font-medium">{formattedDate}</span>
+          </p>
+          <!-- <div class="flex gap-3">
+            {
+              frontmatter.tags.map((tag) => (
+                <span class="inline-flex items-center uppercase    hover:text-blue-500   text-xs font-medium text-black">
+                  <a href={`/tags/${tag}`}>{tag}</a>
+                </span>
+              ))
+            }
+          </div> -->
+        </div>
+        <!-- <p class="max-w-2xl mt-8 mx-auto text-zinc-500">
+          <em>{frontmatter.description}</em>
+        </p> -->
+      </div>
+      <img
+        class="mx-auto w-full max-w-4xl object-cover object-center lg:h-auto"
+        src={frontmatter.image.url}
+        alt={frontmatter.image.alt}
+      />
+
+      <div
+        class="prose mx-auto mt-12 w-full max-w-3xl items-center font-sans prose-headings:font-display"
+      >
+        <slot />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,70 @@
+<div class="fixed z-[9999] mx-auto w-full bg-white">
+  <div class="mx-auto max-w-7xl px-6 py-3 text-xs md:px-12 lg:px-32 lg:py-5">
+    <div
+      x-data="{ open: false }"
+      class="relative mx-auto flex w-full flex-col rounded-xl md:flex-row md:items-center md:justify-between md:rounded-full"
+    >
+      <div class="flex flex-row items-center justify-between md:justify-start">
+        <a
+          class="inline-flex items-center gap-3 font-display font-normal uppercase text-black hover:text-zinc-500"
+          href="/"
+        >
+          The Industrialist
+        </a>
+        <button
+          @click="open = !open"
+          class="inline-flex items-center justify-center p-2 text-black hover:text-blue-500 focus:text-black focus:outline-none md:hidden"
+        >
+          <svg
+            class="h-4 w-4"
+            stroke="currentColor"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              :class="{'hidden': open, 'inline-flex': !open }"
+              class="inline-flex"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+            <path
+              :class="{'hidden': !open, 'inline-flex': open }"
+              class="hidden"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <nav
+        :class="{'flex': open, 'hidden': !open}"
+        class="hidden flex-grow flex-col justify-center py-12 md:flex md:flex-row md:items-end md:py-0"
+      >
+        <ul
+          class="list-none items-center justify-center gap-3 space-y-2 text-center md:ml-auto md:inline-flex md:space-y-0 md:text-left"
+        >
+          <li>
+            by <a
+              href="https://matreja.me/"
+              class="text-black underline hover:text-blue-500">Aman</a
+            >
+            & <a
+              href="https://realfactorio.com/"
+              class="text-black underline hover:text-blue-500">Sehaj</a
+            >
+          </li>
+          <!-- <li>
+            <a
+              href="https://github.com/michael-andreuzza/microblog"
+              class="py-1.5 px-4 border focus:ring-2 h-8 rounded-full border-transparent bg-black hover:bg-black/10 text-white duration-200 focus:ring-offset-2 focus:ring-white hover:text-black inline-flex items-center justify-center ring-1 ring-transparent lg:ml-auto"
+            >
+              GitHub
+            </a>
+          </li> -->
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
